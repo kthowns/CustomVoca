@@ -10,7 +10,7 @@
         android:id="@+id/button2"
         android:layout_width="149dp"
         android:layout_height="63dp"
-        android:text="VocaList Button"
+        android:text="VocaList"
         app:layout_constraintBottom_toTopOf="@+id/button3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
