@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -16,10 +17,10 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class VocasActivity : AppCompatActivity() {
+    private val databaseViewModel: DatabaseViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_vocalist)
-        val databaseViewModel = ViewModelProvider(this)[DatabaseViewModel::class.java]
+
         val binding = DataBindingUtil
             .setContentView<ActivityVocasBinding>(this, R.layout.activity_vocas)
         binding.lifecycleOwner = this
