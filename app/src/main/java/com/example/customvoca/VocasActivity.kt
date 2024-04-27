@@ -25,7 +25,5 @@ class VocasActivity : AppCompatActivity() {
             .setContentView<ActivityVocasBinding>(this, R.layout.activity_vocas)
         binding.lifecycleOwner = this
         binding.databaseViewModel = databaseViewModel
-
-        databaseViewModel.vocaListInsert("Voca1")
     }
 }
