@@ -7,41 +7,37 @@ import androidx.room.Query
 import androidx.room.Update
 
 @Dao
-interface VocaDao{
+interface WordListDao{
     /*
-        Voca(vocas) Dao
+        WordList(word_list) Dao
     */
-    @Query("SELECT * FROM vocas;")
-    fun getAll() : List<Voca>
-    @Query("SELECT COUNT(*) FROM vocas;")
-    fun getVocaCount() : Int
-    @Query("SELECT * FROM vocas WHERE tableId = :tableId AND word = :word;")
-    fun getMeaning(tableId: Int, word: String) : Voca
-    @Query("SELECT * FROM vocas ORDER BY vocaId DESC LIMIT 1;")
-    fun getLastVoca() : Voca
-    @Query("SELECT * FROM vocas WHERE vocaId = :vocaId;")
-    fun getVocaById(vocaId: Int) : Voca
-    @Query("SELECT * FROM vocas WHERE word=:word;")
-    fun getVocaByWord(word: String) : Voca
+    @Query("SELECT * FROM word_list;")
+    fun getAll() : List<Word>
+    @Query("SELECT COUNT(*) FROM word_list;")
+    fun getWordCount() : Int
+    @Query("SELECT * FROM word_list ORDER BY word_id DESC LIMIT 1;")
+    fun getLastWord() : Word
+    @Query("SELECT * FROM word_list WHERE word=:word;")
+    fun getWord(word: String) : Word
     @Insert
-    fun insert(voca: Voca)
+    fun insert(word: Word)
     @Update
-    fun update(voca: Voca)
+    fun update(word: Word)
     @Delete
-    fun delete(voca: Voca)
+    fun delete(word: Word)
 }
 
 @Dao
-interface VocaListDao{
+interface DicListDao{
     /*
-        VocaList(voca_list) Dao
+        DicList(dic_list) Dao
     */
-    @Query("SELECT * FROM voca_list;")
-    suspend fun getAll() : List<VocaList>
+    @Query("SELECT * FROM dic_list;")
+    suspend fun getAll() : List<Dic>
     @Insert
-    suspend fun insert(vocaList: VocaList)
+    suspend fun insert(dic: Dic)
     @Update
-    suspend fun update(vocaList: VocaList)
+    suspend fun update(dic: Dic)
     @Delete
-    suspend fun delete(vocaList: VocaList)
+    suspend fun delete(dic: Dic)
 }
