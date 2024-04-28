@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".VocasActivity">
+            android:name=".DicActivity">
         </activity>
     </application>
 

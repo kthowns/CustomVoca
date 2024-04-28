@@ -6,21 +6,21 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProvider
 import com.example.customvoca.databinding.ActivityMainBinding
 import com.example.customvoca.viewmodel.MainViewModel
 
 class MainActivity : AppCompatActivity() {
     private val mainViewModel: MainViewModel by viewModels()
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val binding = DataBindingUtil
-            .setContentView<ActivityMainBinding>(this, R.layout.activity_main)
+        binding = DataBindingUtil
+            .setContentView(this, R.layout.activity_main)
         binding.lifecycleOwner = this
 
         findViewById<Button>(R.id.btnTest).setOnClickListener{
-            val intent = Intent(this, VocasActivity::class.java)
+            val intent = Intent(this, DicActivity::class.java)
             startActivity(intent)
         }
     }
