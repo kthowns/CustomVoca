@@ -19,9 +19,5 @@ class MainActivity : AppCompatActivity() {
             .setContentView(this, R.layout.activity_main)
         binding.lifecycleOwner = this
 
-        findViewById<Button>(R.id.btnTest).setOnClickListener{
-            val intent = Intent(this, DicActivity::class.java)
-            startActivity(intent)
-        }
     }
 }
