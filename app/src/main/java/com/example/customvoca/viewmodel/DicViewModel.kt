@@ -32,11 +32,11 @@ class DicViewModel(application: Application) : AndroidViewModel(application) {
             recyclerItems.postValue(vocaRepository.getWordAll())
         }
     }
-    fun btnDeleteClicked(){
+    fun deleteWord(word: Word){
         Log.d("dicViewModel", "Delete Button Clicked")
         viewModelScope.launch(Dispatchers.IO){
             withContext(Dispatchers.IO){
-                vocaRepository.deleteWord()
+                vocaRepository.deleteWord(word)
             }
             recyclerItems.postValue(vocaRepository.getWordAll())
         }
