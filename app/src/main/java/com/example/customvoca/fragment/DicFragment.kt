@@ -26,7 +26,7 @@ class DicFragment : Fragment() {
         binding.dicViewModel = dicViewModel
         binding.lifecycleOwner = this.viewLifecycleOwner
 
-        adapter = RecyclerViewAdapter()
+        adapter = RecyclerViewAdapter(dicViewModel)
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.itemAnimator = null
