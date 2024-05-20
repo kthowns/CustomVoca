@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_background"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#f3cf98">
+    android:layout_height="wrap_content"
+    android:background="#f3cf98">>
+
         <TextView
             android:id="@+id/txtWord"
             android:layout_width="wrap_content"
@@ -15,29 +14,44 @@
             android:layout_weight="1"
             android:text="Word"
             android:textColor="#ff8800"
-            android:textSize="40sp" />
+            android:textSize="40sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/txtMeaning"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
             android:layout_weight="1"
             android:text="Meaning"
             android:textColor="#ff8800"
-            android:textSize="40dp"/>
-
+            android:textSize="40dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/txtWord"
+            app:layout_constraintTop_toTopOf="parent" />
         <ImageButton
-            android:id="@+id/imageButton2"
+            android:id="@+id/item_btn_delete"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:background="#00FFFFFF"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/item_btn_edit"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+
+        <ImageButton
+            android:id="@+id/item_btn_edit"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="#00FFFFFF"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@android:drawable/ic_menu_edit" />
 
-        <ImageButton
-            android:id="@+id/imageButton3"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:background="#00FFFFFF"
-            app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
-    </LinearLayout>
-</LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
