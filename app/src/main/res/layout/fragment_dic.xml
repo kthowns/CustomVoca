@@ -23,6 +23,7 @@
             android:text="@={dicViewModel.word}"
             app:layout_constraintEnd_toStartOf="@+id/editTextText2"
             app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
         <EditText
             android:id="@+id/editTextText2"
             android:layout_width="wrap_content"
@@ -41,14 +42,6 @@
             android:text="Add"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextText" />
-        <Button
-            android:id="@+id/btnDelete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="@{()->dicViewModel.btnDeleteClicked()}"
-            android:text="Delete"
-            app:layout_constraintBottom_toBottomOf="@+id/btnAdd"
-            app:layout_constraintStart_toEndOf="@+id/btnAdd" />
         <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
@@ -65,6 +58,7 @@
             android:textSize="30sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnAdd" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="0dp"
@@ -73,5 +67,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Item LongClick 시 Edit Mode"
+            app:layout_constraintBottom_toTopOf="@+id/recycler_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btnAdd"
+            app:layout_constraintTop_toBottomOf="@+id/editTextText2" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
