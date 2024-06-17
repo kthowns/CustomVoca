@@ -2,9 +2,17 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_graph"
-    app:startDestination="@id/dicFragment">
+    app:startDestination="@id/dicListFragment">
     <fragment
         android:id="@+id/dicFragment"
         android:name="com.example.customvoca.fragment.DicFragment"
         android:label="DicFragment" />
+    <fragment
+        android:id="@+id/dicListFragment"
+        android:name="com.example.customvoca.fragment.DicListFragment"
+        android:label="DicListFragment" >
+        <action
+            android:id="@+id/action_dicListFragment_to_dicFragment"
+            app:destination="@id/dicFragment" />
+    </fragment>
 </navigation>
