@@ -22,12 +22,18 @@ interface WordListDao{
     fun getLastWord() : Word
     @Query("SELECT * FROM word_list WHERE word=:word;")
     fun getWord(word: String) : Word
+    @Query("SELECT * FROM word_list WHERE dic_id=:num;")
+    fun getWordByDic(num: Int) : List<Word>
+    @Query("delete from word_list where dic_id=:num")
+    fun dropByListNum(num: Int)
     @Insert
     fun insert(word: Word)
     @Update
     fun update(word: Word)
     @Delete
     fun delete(word: Word)
+    @Query("delete from word_list where word_id=:num")
+    fun delete(num: Int)
 }
 
 @Dao
@@ -37,6 +43,10 @@ interface DicListDao{
     */
     @Query("SELECT * FROM dic_list;")
     fun getAll() : List<Dic>
+    @Query("SELECT COUNT(*) FROM dic_list;")
+    fun getDicCount() : Int
+    @Query("delete from dic_list where dic_id = :num;")
+    fun dropList(num: Int)
     @Insert
     fun insert(dic: Dic)
     @Update

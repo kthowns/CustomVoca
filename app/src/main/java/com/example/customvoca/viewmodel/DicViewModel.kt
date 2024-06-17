@@ -7,29 +7,27 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.customvoca.database.Word
-import com.example.customvoca.model.RecyclerViewAdapter
-import com.example.customvoca.model.VocaRepositoryImpl
+import com.example.customvoca.model.VocaRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class DicViewModel(application: Application) : AndroidViewModel(application) {
-    private var vocaRepository = VocaRepositoryImpl(application)
-    var recyclerItems = MutableLiveData<List<Word>>()
+    private val vocaRepository = VocaRepository.getInstance(application)
+    var dicItems = MutableLiveData<List<Word>>()
     var word = ""
     var meaning = ""
+    var currentDic = 0
     init {
-        viewModelScope.launch(Dispatchers.IO) {
-            recyclerItems.postValue(vocaRepository.getWordAll())
-        }
+        updateItems()
     }
     fun btnAddClicked(){
         Log.d("dicViewModel", "Add Button Clicked")
         viewModelScope.launch(Dispatchers.IO){
             withContext(Dispatchers.IO){
-                vocaRepository.insertWord(word, meaning, 0)
+                vocaRepository.insertWord(word, meaning, currentDic)
             }
-            recyclerItems.postValue(vocaRepository.getWordAll())
+            updateItems()
         }
     }
     fun deleteWord(word: Word){
@@ -38,7 +36,12 @@ class DicViewModel(application: Application) : AndroidViewModel(application) {
             withContext(Dispatchers.IO){
                 vocaRepository.deleteWord(word)
             }
-            recyclerItems.postValue(vocaRepository.getWordAll())
+            dicItems.postValue(vocaRepository.getWordAll())
+        }
+    }
+    fun updateItems(){
+        viewModelScope.launch(Dispatchers.IO) {
+            dicItems.postValue(vocaRepository.getWordByDic(currentDic))
         }
     }
 }

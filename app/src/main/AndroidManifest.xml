@@ -22,7 +22,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".DicActivity">
+            android:name=".AdminActivity">
+        </activity>
+        <activity
+            android:name=".LoginActivity">
         </activity>
     </application>
 
