@@ -1,11 +1,9 @@
 package com.example.customvoca.model
 
-import android.opengl.Visibility
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -14,12 +12,12 @@ import com.example.customvoca.R
 import com.example.customvoca.database.Word
 import com.example.customvoca.viewmodel.DicViewModel
 
-class RecyclerViewAdapter(val dicViewModel: DicViewModel) : RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>(){
-    var itemList: List<Word> = listOf()
+class DicAdapter(val dicViewModel: DicViewModel) : RecyclerView.Adapter<DicAdapter.ViewHolder>(){
+    val itemList = mutableListOf<Word>()
     var isEditMode = false
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         Log.d("RecyclerView", "onCreateViewHolder Run")
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.recyclerview_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.dic_item, parent, false)
         return ViewHolder(view)
     }
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -27,13 +25,13 @@ class RecyclerViewAdapter(val dicViewModel: DicViewModel) : RecyclerView.Adapter
         val item = itemList[position]
         holder.item_word.text = item.word
         holder.item_meaning.text = item.meaning
-        holder.btn_delete.visibility = if(isEditMode) View.VISIBLE else View.GONE
-        holder.btn_edit.visibility = if(isEditMode) View.VISIBLE else View.GONE
+        holder.item_btn_delete.visibility = if(isEditMode) View.VISIBLE else View.GONE
+        holder.item_btn_edit.visibility = if(isEditMode) View.VISIBLE else View.GONE
         holder.item_background.setOnLongClickListener{
             toggleEditMode()
-            return@setOnLongClickListener false
+            return@setOnLongClickListener true
         }
-        holder.btn_delete.setOnClickListener{
+        holder.item_btn_delete.setOnClickListener{
             dicViewModel.deleteWord(item)
         }
     }
@@ -41,15 +39,18 @@ class RecyclerViewAdapter(val dicViewModel: DicViewModel) : RecyclerView.Adapter
         return itemList.count()
     }
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val item_word = itemView.findViewById<TextView>(R.id.txtWord)
-        val item_meaning = itemView.findViewById<TextView>(R.id.txtMeaning)
+        val item_word = itemView.findViewById<TextView>(R.id.item_word)
+        val item_meaning = itemView.findViewById<TextView>(R.id.item_meaning)
         val item_background = itemView.findViewById<ConstraintLayout>(R.id.item_background)
-        val btn_delete = itemView.findViewById<ImageButton>(R.id.item_btn_delete)
-        val btn_edit = itemView.findViewById<ImageButton>(R.id.item_btn_edit)
+        val item_btn_delete = itemView.findViewById<ImageButton>(R.id.item_btn_delete)
+        val item_btn_edit = itemView.findViewById<ImageButton>(R.id.item_btn_edit)
     }
     fun updateItem(items: List<Word>){
         Log.d("RecyclerView", "updateItem Run")
-        itemList = items
+        itemList.clear()
+        items.forEach{
+            itemList.add(it)
+        }
         notifyDataSetChanged()
     }
     fun toggleEditMode(){
