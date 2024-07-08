@@ -12,15 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Recycler TEST"
-            android:textSize="50dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
-
         <Button
             android:id="@+id/btn_add"
             android:layout_width="wrap_content"
@@ -38,8 +29,15 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toEndOf="@+id/btn_add"
             app:layout_constraintTop_toTopOf="parent"
-            android:ems="10"/>
+            android:ems="7"/>
 
+        <Button
+            android:id="@+id/btn_admin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Admin Page"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swipe_refresh_recycler"
             android:layout_width="0dp"
@@ -53,6 +51,7 @@
                 android:id="@+id/recycler_view_diclist"
                 android:layout_width="0dp"
                 android:layout_height="0dp" />
+
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

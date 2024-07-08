@@ -35,7 +35,7 @@ class DicListAdapter(val dicListViewModel: DicListViewModel) : RecyclerView.Adap
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = itemList[position]
         holder.item_dic_name.text = item.name
-        holder.item_dic_num.text = item.dic_id.toString()
+        holder.item_dic_num.text = item.dic_id.toString() + ". "
         holder.item_btn_delete.visibility = if(isEditMode) View.VISIBLE else View.GONE
         holder.item_btn_edit.visibility = if(isEditMode) View.VISIBLE else View.GONE
         holder.item_background.setOnLongClickListener{

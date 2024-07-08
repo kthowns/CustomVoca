@@ -9,7 +9,8 @@
             android:id="@+id/item_background"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#f3cf98">
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/back">
 
                 <TextView
                     android:id="@+id/item_word"
@@ -17,8 +18,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Word"
-                    android:textColor="#ff8800"
                     android:textSize="40sp"
+                    android:layout_marginStart="10dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -30,15 +31,14 @@
                     android:layout_marginStart="20dp"
                     android:layout_weight="1"
                     android:text="Meaning"
-                    android:textColor="#ff8800"
-                    android:textSize="40dp"
+                    android:textSize="40sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/item_word"
                     app:layout_constraintTop_toTopOf="parent" />
                 <ImageButton
                     android:id="@+id/item_btn_delete"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:background="#00FFFFFF"
                     android:visibility="invisible"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -48,8 +48,8 @@
 
                 <ImageButton
                     android:id="@+id/item_btn_edit"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:background="#00FFFFFF"
                     android:visibility="invisible"
                     app:layout_constraintBottom_toBottomOf="parent"
