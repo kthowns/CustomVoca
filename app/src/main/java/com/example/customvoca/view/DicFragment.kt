@@ -17,7 +17,6 @@ import com.example.customvoca.viewmodel.DicListViewModel
 import com.example.customvoca.viewmodel.DicViewModel
 
 class DicFragment : Fragment() {
-    private val dicListViewModel: DicListViewModel by activityViewModels()
     private val dicViewModel: DicViewModel by viewModels()
     private lateinit var binding: FragmentDicBinding
     private lateinit var adapter: DicAdapter
@@ -37,9 +36,14 @@ class DicFragment : Fragment() {
         binding.recyclerViewDic.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerViewDic.itemAnimator = null
 
-        dicViewModel.dicItems.observe(viewLifecycleOwner, Observer { items ->
+        binding.swipeRecyclerDic.setOnRefreshListener {
+            dicViewModel.updateItems()
+        }
+
+        dicViewModel.dicItems.observe(viewLifecycleOwner) { items ->
+            binding.swipeRecyclerDic.isRefreshing = false
             adapter.updateItem(items)
-        })
+        }
         return binding.root
     }
     fun getArgs(key: String): String{
