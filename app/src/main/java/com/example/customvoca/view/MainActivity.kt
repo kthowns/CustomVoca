@@ -1,14 +1,12 @@
-package com.example.customvoca
+package com.example.customvoca.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.Button
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
+import com.example.customvoca.R
 import com.example.customvoca.databinding.ActivityMainBinding
-import com.example.customvoca.model.VocaRepository
 import com.example.customvoca.viewmodel.MainViewModel
 
 class MainActivity : AppCompatActivity() {

@@ -5,11 +5,11 @@
     app:startDestination="@id/dicListFragment">
     <fragment
         android:id="@+id/dicFragment"
-        android:name="com.example.customvoca.fragment.DicFragment"
+        android:name="com.example.customvoca.view.DicFragment"
         android:label="DicFragment" />
     <fragment
         android:id="@+id/dicListFragment"
-        android:name="com.example.customvoca.fragment.DicListFragment"
+        android:name="com.example.customvoca.view.DicListFragment"
         android:label="DicListFragment" >
         <action
             android:id="@+id/action_dicListFragment_to_dicFragment"

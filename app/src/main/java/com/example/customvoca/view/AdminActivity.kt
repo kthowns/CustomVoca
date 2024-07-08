@@ -1,24 +1,18 @@
-package com.example.customvoca
+package com.example.customvoca.view
 
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
-import android.widget.CheckBox
 import android.widget.ListView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.util.forEach
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.LifecycleCoroutineScope
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import com.example.customvoca.R
 import com.example.customvoca.database.Dic
 import com.example.customvoca.database.Word
 import com.example.customvoca.databinding.ActivityAdminBinding
-import com.example.customvoca.model.VocaDatabase
 import com.example.customvoca.model.VocaRepository
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -33,7 +27,7 @@ class AdminActivity: AppCompatActivity() {
     private lateinit var adapterWord: ArrayAdapter<Word>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_admin)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_admin)
         binding.lifecycleOwner = this
         vocaRepository = VocaRepository.getInstance(application)
         tableType = 0

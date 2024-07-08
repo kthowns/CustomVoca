@@ -1,4 +1,4 @@
-package com.example.customvoca.fragment
+package com.example.customvoca.view
 
 import android.os.Bundle
 import android.util.Log

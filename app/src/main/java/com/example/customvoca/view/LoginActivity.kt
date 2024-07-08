@@ -1,4 +1,4 @@
-package com.example.customvoca
+package com.example.customvoca.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
