@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main_graph"
-    app:startDestination="@id/dicListFragment">
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.customvoca.view.HomeFragment"
+        android:label="HomeFragment" />
     <fragment
         android:id="@+id/dicFragment"
         android:name="com.example.customvoca.view.DicFragment"
@@ -15,4 +19,8 @@
             android:id="@+id/action_dicListFragment_to_dicFragment"
             app:destination="@id/dicFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.customvoca.view.SettingsFragment"
+        android:label="SettingsFragment" />
 </navigation>
