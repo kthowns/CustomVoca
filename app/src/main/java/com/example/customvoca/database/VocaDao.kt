@@ -45,6 +45,8 @@ interface DicListDao{
     fun getAll() : List<Dic>
     @Query("SELECT COUNT(*) FROM dic_list;")
     fun getDicCount() : Int
+    @Query("SELECT * from dic_list where dic_id = :dicId")
+    fun getDic(dicId: Int) : Dic
     @Query("delete from dic_list where dic_id = :num;")
     fun dropList(num: Int)
     @Insert

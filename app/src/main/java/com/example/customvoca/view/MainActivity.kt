@@ -28,6 +28,18 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host) as NavHostFragment
         val navController = navHostFragment.navController
 
+        binding.bottomNavigationView.itemIconTintList = null;
         binding.bottomNavigationView.setupWithNavController(navController)
+
+        binding.bottomNavigationView.setOnItemSelectedListener { item ->
+            when(item.itemId){
+                R.id.navmenu_previous -> {
+                    navController.popBackStack()
+                }
+                else -> navController.navigate(item.itemId)
+            }
+            true
+        }
+
     }
 }

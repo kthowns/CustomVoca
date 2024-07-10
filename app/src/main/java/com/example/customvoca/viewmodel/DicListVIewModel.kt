@@ -13,7 +13,6 @@ import kotlinx.coroutines.withContext
 class DicListViewModel(application: Application) : AndroidViewModel(application) {
     private val vocaRepository = VocaRepository.getInstance(application)
     var dicListItems = MutableLiveData<List<Dic>>()
-    var currentDic = 0
     var dicName = ""
     init{
         updateItems()
