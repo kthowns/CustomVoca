@@ -32,6 +32,9 @@ class VocaRepository private constructor(private val application: Application) {
     fun getLastWord(): Word {
         return db.wordListDao().getLastWord()
     }
+    fun getDicById(dicId: Int): Dic {
+        return db.dicListDao().getDic(dicId)
+    }
     fun insertWord(word: Word) {
         db.wordListDao().insert(word)
         Log.d("Repository", "Insert "+db.wordListDao().getAll().toString())
