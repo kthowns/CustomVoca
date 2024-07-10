@@ -44,7 +44,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/item_btn_edit"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+                    app:srcCompat="@drawable/ic_delete" />
 
                 <ImageButton
                     android:id="@+id/item_btn_edit"
@@ -55,7 +55,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@android:drawable/ic_menu_edit" />
+                    app:srcCompat="@drawable/ic_edit" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
