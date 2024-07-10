@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <Button
+        <android.widget.Button
             android:id="@+id/btn_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -30,8 +30,7 @@
             app:layout_constraintStart_toEndOf="@+id/btn_add"
             app:layout_constraintTop_toTopOf="parent"
             android:ems="7"/>
-
-        <Button
+        <android.widget.Button
             android:id="@+id/btn_admin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -51,7 +50,6 @@
                 android:id="@+id/recycler_view_diclist"
                 android:layout_width="0dp"
                 android:layout_height="0dp" />
-
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
