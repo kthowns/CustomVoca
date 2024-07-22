@@ -29,7 +29,7 @@ class DicAdapter(val dicViewModel: DicViewModel) : RecyclerView.Adapter<DicAdapt
         holder.item_btn_edit.visibility = if(isEditMode) View.VISIBLE else View.GONE
         holder.item_background.setOnLongClickListener{
             toggleEditMode()
-            return@setOnLongClickListener true
+            true
         }
         holder.item_btn_delete.setOnClickListener{
             dicViewModel.deleteWord(item)

@@ -40,7 +40,7 @@ class DicListAdapter(val dicListViewModel: DicListViewModel) : RecyclerView.Adap
         holder.item_btn_edit.visibility = if(isEditMode) View.VISIBLE else View.GONE
         holder.item_background.setOnLongClickListener{
             toggleEditMode()
-            return@setOnLongClickListener true
+            true
         }
         holder.item_background.setOnClickListener{
             val bundle = Bundle()
@@ -48,7 +48,6 @@ class DicListAdapter(val dicListViewModel: DicListViewModel) : RecyclerView.Adap
             it.findNavController().navigate(R.id.action_dicListFragment_to_dicFragment, bundle)
         }
         holder.item_btn_delete.setOnClickListener{
-            dicListViewModel.dicListItems.postValue(dicListViewModel.dicListItems.value?.minus(item))
             dicListViewModel.deleteDic(item)
         }
     }
