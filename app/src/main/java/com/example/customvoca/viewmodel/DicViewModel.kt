@@ -10,6 +10,7 @@ import com.example.customvoca.database.Dic
 import com.example.customvoca.database.Word
 import com.example.customvoca.model.VocaRepository
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -19,23 +20,12 @@ class DicViewModel(application: Application) : AndroidViewModel(application) {
     val currentDic : LiveData<Dic>
         get() = _currentDic
     var dicItems = MutableLiveData<List<Word>>()
-    var word = ""
-    var meaning = ""
-    fun setCurrentDic(dicId: Int){
-        viewModelScope.launch(Dispatchers.IO){
-            _currentDic.postValue(vocaRepository.getDicById(dicId))
-            Log.d("DicViewModel", "Setting CurrentDic")
-        }
-    }
-    fun btnAddClicked(){
-        Log.d("dicViewModel", "Add Button Clicked")
+
+    fun addWord(word: String, meaning: String){
         viewModelScope.launch(Dispatchers.IO){
             withContext(Dispatchers.IO){
-                val dic = _currentDic.value
-                if(dic != null)
-                    vocaRepository.insertWord(word, meaning, dic.dic_id)
-                else
-                    Log.d("dicViewModel", "btnAddClicked() Failed")
+                vocaRepository.insertWord(word, meaning, getCurrentDicId())
+                delay(100)
             }
             updateItems()
         }
@@ -45,29 +35,26 @@ class DicViewModel(application: Application) : AndroidViewModel(application) {
         viewModelScope.launch(Dispatchers.IO){
             withContext(Dispatchers.IO){
                 vocaRepository.deleteWord(word)
+                delay(100)
             }
-            dicItems.postValue(vocaRepository.getWordAll())
+            updateItems()
         }
     }
-    fun updateItems(){
-        viewModelScope.launch(Dispatchers.IO) {
-            val dic = _currentDic.value
-            if(dic != null)
-                dicItems.postValue(vocaRepository.getWordByDic(dic.dic_id))
-            else
-                Log.d("dicViewModel", "updateItems() Failed")
+    fun setCurrentDic(dicId: Int){
+        viewModelScope.launch(Dispatchers.IO){
+            _currentDic.postValue(vocaRepository.getDicById(dicId))
+            Log.d("DicViewModel", "Setting CurrentDic")
         }
-    }
-    fun getCurrentDicTitle() : String {
-        val dic = _currentDic.value
-        if(dic != null)
-            return dic.name
-        return ""
     }
     fun getCurrentDicId() : Int{
         val dic = _currentDic.value
         if(dic != null)
             return dic.dic_id
         return 0
+    }
+    fun updateItems(){
+        viewModelScope.launch(Dispatchers.IO) {
+            dicItems.postValue(vocaRepository.getWordByDic(getCurrentDicId()))
+        }
     }
 }
