@@ -7,20 +7,32 @@ import androidx.lifecycle.viewModelScope
 import com.example.customvoca.database.Dic
 import com.example.customvoca.model.VocaRepository
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class DicListViewModel(application: Application) : AndroidViewModel(application) {
     private val vocaRepository = VocaRepository.getInstance(application)
     var dicListItems = MutableLiveData<List<Dic>>()
-    var dicName = ""
+
     init{
         updateItems()
     }
-    fun onClickBtnAdd(){
+
+    fun addDic(dicName: String){
         viewModelScope.launch(Dispatchers.IO){
             withContext(Dispatchers.IO){
                 vocaRepository.insertDic(Dic(dicName))
+                delay(100)
+            }
+            updateItems()
+        }
+    }
+    fun deleteDic(dic: Dic){
+        viewModelScope.launch(Dispatchers.IO){
+            withContext(Dispatchers.IO){
+                vocaRepository.deleteDic(dic)
+                delay(100)
             }
             updateItems()
         }
@@ -28,16 +40,6 @@ class DicListViewModel(application: Application) : AndroidViewModel(application)
     fun updateItems(){
         viewModelScope.launch(Dispatchers.IO) {
             dicListItems.postValue(vocaRepository.getDicAll())
-        }
-    }
-    fun insertDic(dic: Dic){
-        viewModelScope.launch(Dispatchers.IO){
-            vocaRepository.insertDic(dic)
-        }
-    }
-    fun deleteDic(dic: Dic){
-        viewModelScope.launch(Dispatchers.IO){
-            vocaRepository.deleteDic(dic)
         }
     }
 }
