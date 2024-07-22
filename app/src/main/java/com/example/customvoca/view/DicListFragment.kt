@@ -31,6 +31,10 @@ class DicListFragment : Fragment() {
         binding.recyclerViewDiclist.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerViewDiclist.itemAnimator = null
 
+        binding.btnAdd.setOnClickListener{
+            dicListViewModel.addDic(binding.textDicName.text.toString())
+        }
+
         dicListViewModel.dicListItems.observe(viewLifecycleOwner) { items ->
             binding.swipeRefreshRecycler.isRefreshing = false
             adapter.updateItem(items)
