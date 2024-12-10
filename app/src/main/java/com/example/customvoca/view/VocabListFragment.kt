@@ -1,28 +1,13 @@
 package com.example.customvoca.view
 
-import android.content.Intent
-import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.customvoca.R
-import com.example.customvoca.databinding.FragmentDiclistBinding
-import com.example.customvoca.model.DicListAdapter
-import com.example.customvoca.viewmodel.DicListViewModel
-
-class DicListFragment : Fragment() {
+/*
+class VocabListFragment : Fragment() {
     private val dicListViewModel: DicListViewModel by activityViewModels()
     private lateinit var binding: FragmentDiclistBinding
     private lateinit var adapter: DicListAdapter
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_diclist, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_vocablist, container, false)
         binding.lifecycleOwner = this.viewLifecycleOwner
         binding.dicListViewModel = dicListViewModel
 
@@ -51,3 +36,4 @@ class DicListFragment : Fragment() {
         return binding.root
     }
 }
+ */

@@ -1,32 +1,14 @@
 package com.example.customvoca.view
 
-import android.animation.ObjectAnimator
-import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.customvoca.R
-import com.example.customvoca.database.Dic
-import com.example.customvoca.database.Word
-import com.example.customvoca.databinding.FragmentDicBinding
-import com.example.customvoca.model.DicAdapter
-import com.example.customvoca.viewmodel.DicViewModel
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
-
-
-class DicFragment : Fragment() {
+/*
+class WordListFragment : Fragment() {
     private val dicViewModel: DicViewModel by viewModels()
     private lateinit var binding: FragmentDicBinding
     private lateinit var adapter: DicAdapter
     private var arg: String = ""
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_dic, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_wordlist, container, false)
         binding.dicViewModel = dicViewModel
         binding.lifecycleOwner = this.viewLifecycleOwner
 
@@ -102,4 +84,4 @@ class DicFragment : Fragment() {
             return result
         return ""
     }
-}
+}*/

@@ -1,35 +1,13 @@
 package com.example.customvoca.model
 
-import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.ImageButton
-import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.databinding.DataBindingUtil
-import androidx.navigation.findNavController
-import androidx.recyclerview.widget.RecyclerView
-import com.example.customvoca.R
-import com.example.customvoca.database.Dic
-import com.example.customvoca.database.Word
-import com.example.customvoca.databinding.DiclistItemBinding
-import com.example.customvoca.viewmodel.DicListViewModel
-import com.example.customvoca.viewmodel.DicViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-
+/*
 class DicListAdapter(val dicListViewModel: DicListViewModel) : RecyclerView.Adapter<DicListAdapter.ViewHolder>(){
     private var itemList = listOf<Dic>()
     private var isEditMode = false
     private lateinit var binding: DiclistItemBinding
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.diclist_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.vocablist_item, parent, false)
         return ViewHolder(view)
     }
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -69,4 +47,4 @@ class DicListAdapter(val dicListViewModel: DicListViewModel) : RecyclerView.Adap
         isEditMode = !isEditMode
         notifyDataSetChanged()
     }
-}
+}*/
