@@ -1,16 +1,6 @@
 package com.example.customvoca.viewmodel
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
-import com.example.customvoca.database.Dic
-import com.example.customvoca.model.VocaRepository
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-
+/*
 class DicListViewModel(application: Application) : AndroidViewModel(application) {
     private val vocaRepository = VocaRepository.getInstance(application)
     var dicListItems = MutableLiveData<List<Dic>>()
@@ -42,4 +32,4 @@ class DicListViewModel(application: Application) : AndroidViewModel(application)
             dicListItems.postValue(vocaRepository.getDicAll())
         }
     }
-}
+}*/
