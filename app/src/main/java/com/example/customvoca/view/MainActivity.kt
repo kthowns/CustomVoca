@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        val userId = intent.getIntExtra("userId", 0)
         val vocabRepository = VocabRepository()
         lifecycleScope.launch(Dispatchers.IO){
             Log.d("VocabRepository", vocabRepository.getVocabs(1).toString())
@@ -31,22 +31,12 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil
             .setContentView(this, R.layout.activity_main)
         binding.lifecycleOwner = this
-/*
+
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host) as NavHostFragment
         val navController = navHostFragment.navController
-
-        binding.bottomNavigationView.itemIconTintList = null;
-        binding.bottomNavigationView.setupWithNavController(navController)
-
-        binding.bottomNavigationView.setOnItemSelectedListener { item ->
-            when(item.itemId){
-                R.id.navmenu_previous -> {
-                    navController.popBackStack()
-                }
-                else -> navController.navigate(item.itemId)
-            }
-            true
+        val bundle = Bundle().apply {
+            putInt("userId", userId)  // 전달할 데이터
         }
- */
+        navController.navigate(R.id.vocabListFragment, bundle)
     }
 }

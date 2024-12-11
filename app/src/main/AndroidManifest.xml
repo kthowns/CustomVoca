@@ -28,6 +28,9 @@
             android:name=".view.MainActivity">
         </activity>
         <activity
+            android:name=".view.FlashcardActivity">
+        </activity>
+        <activity
             android:name=".view.LoginActivity">
         </activity>
     </application>

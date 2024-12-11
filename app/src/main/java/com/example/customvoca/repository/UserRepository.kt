@@ -7,14 +7,14 @@ import com.example.customvoca.dto.LoginDto
 import org.json.JSONObject
 
 class UserRepository {
-    suspend fun login(request: LoginDto.Request): ApiResponse<*> {
+    suspend fun login(request: LoginDto.Request): ApiResponse<LoginDto.Response> {
         val response = RetrofitInstance.authApi.login(request)
 
         if(response.isSuccessful){
             return response.body() ?: throw Exception("Response Body is Null")
         }
         val apiError = parseApiError(response.errorBody()?.string())
-        return ApiResponse<LoginDto.Response>(apiError.status, apiError.message, null)
+        return ApiResponse(apiError.status, apiError.message, null)
     }
 
     private fun parseApiError(errorBody: String?): ApiError {

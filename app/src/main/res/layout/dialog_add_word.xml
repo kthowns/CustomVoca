@@ -1,0 +1,31 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <!-- 표현식 입력 -->
+    <EditText
+        android:id="@+id/editTextExpression"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="단어"
+        android:inputType="text"/>
+
+    <!-- 정의 입력 -->
+    <EditText
+        android:id="@+id/editTextDefinition"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="뜻"
+        android:inputType="text"
+        android:layout_marginTop="8dp"/>
+
+    <!-- 타입 선택 (ComboBox) -->
+    <Spinner
+        android:id="@+id/spinnerPOS"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"/>
+
+</LinearLayout>

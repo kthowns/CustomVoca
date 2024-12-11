@@ -2,25 +2,34 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/vocabListFragment">
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.customvoca.view.HomeFragment"
         android:label="HomeFragment" />
     <fragment
-        android:id="@+id/dicFragment"
+        android:id="@+id/wordListFragment"
         android:name="com.example.customvoca.view.WordListFragment"
-        android:label="DicFragment" />
-    <fragment
-        android:id="@+id/dicListFragment"
-        android:name="com.example.customvoca.view.VocabListFragment"
-        android:label="DicListFragment" >
+        android:label="Word List Fragment">
         <action
-            android:id="@+id/action_dicListFragment_to_dicFragment"
-            app:destination="@id/dicFragment" />
+            android:id="@+id/action_wordListFragment_to_flashcardFragment"
+            app:destination="@id/flashcardFragment">
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/vocabListFragment"
+        android:name="com.example.customvoca.view.VocabListFragment"
+        android:label="VocabListFragment" >
+        <action
+            android:id="@+id/action_vocabListFragment_to_wordListFragment"
+            app:destination="@id/wordListFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.customvoca.view.SettingsFragment"
         android:label="SettingsFragment" />
+    <fragment
+        android:id="@+id/flashcardFragment"
+        android:name="com.example.customvoca.view.FlashcardFragment"
+        android:label="FlashcardFragment" />
 </navigation>

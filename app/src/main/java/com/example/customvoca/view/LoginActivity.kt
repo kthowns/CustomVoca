@@ -14,7 +14,6 @@ import androidx.lifecycle.lifecycleScope
 import com.example.customvoca.R
 import com.example.customvoca.dto.LoginDto
 import com.example.customvoca.repository.UserRepository
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class LoginActivity : AppCompatActivity() {
@@ -35,7 +34,9 @@ class LoginActivity : AppCompatActivity() {
                 val response = userRepository.login(request)
                 loadingDialog.close()
                 if(response.status == 200){
-                    startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                    val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                    intent.putExtra("userId", response.data?.userId)
+                    startActivity(intent)
                     finish()
                 } else {
                     Toast.makeText(applicationContext, response.message, Toast.LENGTH_SHORT).show()
@@ -43,7 +44,6 @@ class LoginActivity : AppCompatActivity() {
             }
         }
     }
-
 
     class LoadingDialog(private val context: Context) {
         private var dialog: AlertDialog? = null
