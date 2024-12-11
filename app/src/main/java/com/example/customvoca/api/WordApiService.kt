@@ -15,7 +15,7 @@ import retrofit2.http.Query
 interface WordApiService {
     // GET 요청
     @GET("/api/words/all")
-    suspend fun getWords(@Query("user_id") userId: Int): Response<ApiResponse<List<WordDto>>>
+    suspend fun getWords(@Query("vocab_id") vocabId: Int): Response<ApiResponse<List<WordDto>>>
 
     @GET("/api/words/detail")
     suspend fun getWordDetail(@Query("word_id") wordId: Int): Response<ApiResponse<WordDto>>

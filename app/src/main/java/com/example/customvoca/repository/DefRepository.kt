@@ -18,47 +18,50 @@ class DefRepository {
     suspend fun getDefs(wordId: Int): ApiResponse<List<DefDto>> {
         val response = RetrofitInstance.defApi.getDefs(wordId)
 
-        if(response.isSuccessful){
+        if (response.isSuccessful) {
             return response.body() ?: throw Exception("Response Body is Null")
         }
         val apiError = parseApiError(response.errorBody()?.string())
         return ApiResponse(apiError.status, apiError.message, null)
     }
 
-    suspend fun getDefDetail(defId: Int): ApiResponse<DefDto>{
+    suspend fun getDefDetail(defId: Int): ApiResponse<DefDto> {
         val response = RetrofitInstance.defApi.getDefDetail(defId)
 
-        if(response.isSuccessful){
+        if (response.isSuccessful) {
             return response.body() ?: throw Exception("Response Body is Null")
         }
         val apiError = parseApiError(response.errorBody()?.string())
         return ApiResponse(apiError.status, apiError.message, null)
     }
 
-    suspend fun createDef(wordId: Int, request: CreateDef.Request): ApiResponse<CreateDef.Response>{
+    suspend fun createDef(
+        wordId: Int,
+        request: CreateDef.Request
+    ): ApiResponse<CreateDef.Response> {
         val response = RetrofitInstance.defApi.createDef(wordId, request)
 
-        if(response.isSuccessful){
+        if (response.isSuccessful) {
             return response.body() ?: throw Exception("Response Body is Null")
         }
         val apiError = parseApiError(response.errorBody()?.string())
         return ApiResponse(apiError.status, apiError.message, null)
     }
 
-    suspend fun editDef(defId: Int, request: CreateDef.Request): ApiResponse<CreateDef.Response>{
+    suspend fun editDef(defId: Int, request: CreateDef.Request): ApiResponse<CreateDef.Response> {
         val response = RetrofitInstance.defApi.editDef(defId, request)
 
-        if(response.isSuccessful){
+        if (response.isSuccessful) {
             return response.body() ?: throw Exception("Response Body is Null")
         }
         val apiError = parseApiError(response.errorBody()?.string())
         return ApiResponse(apiError.status, apiError.message, null)
     }
 
-    suspend fun deleteDef(defId: Int): ApiResponse<DefDto>{
+    suspend fun deleteDef(defId: Int): ApiResponse<DefDto> {
         val response = RetrofitInstance.defApi.deleteDef(defId)
 
-        if(response.isSuccessful){
+        if (response.isSuccessful) {
             return response.body() ?: throw Exception("Response Body is Null")
         }
         val apiError = parseApiError(response.errorBody()?.string())
@@ -68,10 +71,16 @@ class DefRepository {
     private fun parseApiError(errorBody: String?): ApiError {
         // 예시로 errorBody를 파싱하는 로직을 추가
         // JSON 파싱을 통해 ApiError 객체로 변환
-        val json = JSONObject(errorBody)
+        val json = errorBody?.let { JSONObject(it) }
+        if (json != null) {
+            return ApiError(
+                status = json.optInt("status", -1),
+                message = json.optString("message", "Unknown error")
+            )
+        }
         return ApiError(
-            status = json.optInt("status", -1),
-            message = json.optString("message", "Unknown error")
+            status = 500,
+            message = "Internal Server Error"
         )
     }
 }
